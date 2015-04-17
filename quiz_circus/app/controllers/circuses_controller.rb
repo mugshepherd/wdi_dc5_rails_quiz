@@ -4,7 +4,7 @@ class CircusesController < ApplicationController
   end
 
   def show
-
+    @circus = Circus.find(params[:id])
   end
 
   def new
@@ -12,7 +12,7 @@ class CircusesController < ApplicationController
   end
 
   def create
-    @circus = Circus.new(circus_params)
+    @circus = Circus.new(params[:id])
     if @circus.save
       redirect_to @circus
     else
@@ -43,4 +43,6 @@ class CircusesController < ApplicationController
   def circus_params
     params.require(:circus).permit(:name, :image_url)
   end
+
+
 end
